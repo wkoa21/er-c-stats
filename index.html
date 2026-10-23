@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>이터널 리턴 내전 전적</title>
+<style>
+:root{color-scheme:dark;--bg:#101218;--panel:#191d27;--panel2:#202635;--line:#30384a;--text:#eef1f7;--muted:#a5aec0;--accent:#9b8cff;--green:#65d6a5;--red:#ff8585;--yellow:#f3ca78}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#1a2030 0,#101218 48%);color:var(--text);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{padding:30px max(20px,calc((100vw - 1200px)/2));border-bottom:1px solid var(--line);background:#11151ddd}
+.eyebrow{color:var(--accent);font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+h1{font-size:clamp(25px,4vw,36px);margin:6px 0}header p{color:var(--muted);margin:0;max-width:800px}
+main{max-width:1200px;margin:auto;padding:22px 18px 60px}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+button,.tab{font:inherit;border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:10px;padding:10px 14px;cursor:pointer}
+button:hover,.tab:hover{border-color:var(--accent)}button.primary{background:var(--accent);color:#171329;border-color:transparent;font-weight:800}button.danger{color:var(--red)}.tab.active{background:var(--accent);color:#171329;border-color:transparent;font-weight:800}
+.view{display:none}.view.active{display:block}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:16px}
+.card,.panel{background:linear-gradient(145deg,var(--panel),#171b24);border:1px solid var(--line);border-radius:16px;padding:17px;min-width:0}
+.metric-label{color:var(--muted);font-size:13px}.metric{font-size:30px;font-weight:850;letter-spacing:-.04em;margin-top:5px}.metric small{font-size:14px;color:var(--muted);font-weight:500}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:22px 0 12px}.section-head h2{font-size:19px;margin:0}.section-head p{margin:3px 0 0;color:var(--muted);font-size:13px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:10px 9px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}th{color:var(--muted);font-weight:700;background:#202635}tbody tr:hover{background:#ffffff06}td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}
+.pill{display:inline-block;border-radius:99px;padding:3px 8px;font-size:12px;background:#292d3b;color:#d7d9e5}.win{color:var(--green);font-weight:800}.loss{color:var(--red)}.unknown{color:var(--yellow)}
+.bar-list{display:grid;gap:12px}.bar-row{display:grid;grid-template-columns:minmax(80px,140px) 1fr 55px;gap:10px;align-items:center;font-size:13px}.bar-bg{height:9px;background:#2b3040;border-radius:20px;overflow:hidden}.bar{height:100%;background:linear-gradient(90deg,#8170ed,#b4a8ff);border-radius:20px}
+label{display:block;font-size:13px;color:var(--muted);margin-bottom:5px}input,select,textarea{width:100%;background:#11151d;border:1px solid var(--line);color:var(--text);border-radius:9px;padding:10px 11px;font:inherit}textarea{min-height:72px;resize:vertical}input:focus,select:focus,textarea:focus{outline:1px solid var(--accent);border-color:var(--accent)}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.field.full{grid-column:1/-1}.hint{color:var(--muted);font-size:12px;margin-top:5px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.match-card{padding:15px;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;background:#171b24}.match-top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.match-id{color:var(--muted);font-size:12px}.teams{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.team{padding:11px;border-radius:10px;background:#202635}.team strong{display:block;margin-bottom:5px}.team p{margin:0;color:#d0d5e1;font-size:13px}.footer-note{color:var(--muted);font-size:12px;margin-top:14px}.empty{padding:25px;text-align:center;color:var(--muted)}
+
+.character-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:12px;margin-top:14px}
+.character-card{position:relative;overflow:hidden;min-width:0;border:1px solid var(--line);border-radius:14px;background:linear-gradient(160deg,#242b3b,#171b24);padding:0;cursor:pointer;transition:transform .15s,border-color .15s;text-align:left;color:var(--text)}
+.character-card:hover{transform:translateY(-3px);border-color:var(--accent)}
+.character-art{height:145px;display:flex;align-items:end;justify-content:center;background:radial-gradient(ellipse at 50% 90%,#6d60b655,transparent 65%),linear-gradient(180deg,#2a3040,#1a1e29);overflow:hidden}
+.character-art img{height:100%;width:100%;object-fit:contain;object-position:center bottom;image-rendering:auto}
+.character-art .no-art{font-size:34px;color:#6e7890;padding:30px}
+.character-info{padding:10px 11px 12px}.character-name{font-weight:800;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.character-sub{color:var(--muted);font-size:11px;margin-top:2px}.character-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px}
+.character-stat{padding:7px 8px;border-radius:8px;background:#ffffff08}.character-stat span{display:block;color:var(--muted);font-size:10px}.character-stat strong{font-size:14px;font-variant-numeric:tabular-nums}
+.character-wr{color:var(--green)}.character-ban{color:#f0a0b3}.character-detail{display:grid;grid-template-columns:100px 1fr;gap:14px;align-items:center;padding:14px;border:1px solid var(--line);border-radius:14px;background:#ffffff05;margin:12px 0}
+.character-detail img{width:100px;height:130px;object-fit:contain;background:#202635;border-radius:10px}.character-detail h3{margin:0 0 5px}.character-detail p{margin:4px 0;color:var(--muted);font-size:13px}
+.pick-strip{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}.pick-chip{display:flex;align-items:center;gap:5px;padding:3px 6px;border:1px solid #ffffff12;border-radius:8px;background:#11151d;font-size:12px}.pick-chip img{width:23px;height:30px;object-fit:contain}.pick-chip .missing{width:23px;height:30px;display:grid;place-items:center;color:var(--muted)}
+@media(max-width:760px){.character-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.character-art{height:125px}.character-detail{grid-template-columns:78px 1fr}.character-detail img{width:78px;height:108px}}
+@media(max-width:760px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.grid2{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.metric{font-size:25px}header{padding-top:23px;padding-bottom:23px}}
+</style>
+</head>
+<body>
+<header><div class="eyebrow">ETERNAL RETURN · PRIVATE SCRIM TRACKER</div><h1>내전 전적</h1><p>내전 경기 기록과 캐릭터 픽률·밴률·승률, 참가자별 전적을 확인할 수 있는 공개 페이지입니다.</p></header>
+<main>
+<nav>
+<button class="tab active" data-view="dashboard">대시보드</button>
+<button class="tab" data-view="characters">캐릭터 통계</button>
+<button class="tab" data-view="players">개인 통계</button>
+<button class="tab" data-view="matches">경기 기록</button>
+
+</nav>
+<section id="dashboard" class="view active">
+<div class="cards" id="metrics"></div>
+<div class="grid2">
+<div class="panel"><div class="section-head"><div><h2>최다 픽 캐릭터</h2><p>동률은 모두 표시</p></div></div><div id="topPicks" class="bar-list"></div></div>
+<div class="panel"><div class="section-head"><div><h2>밴 기록</h2><p>[알 수 없음]도 별도 항목으로 집계</p></div></div><div id="topBans" class="bar-list"></div></div>
+</div>
+<div class="section-head"><div><h2>최근 경기</h2><p>최신 기록 5개</p></div><button onclick="showView('matches')">전체 기록 보기</button></div>
+<div id="recentMatches"></div>
+</section>
+<section id="characters" class="view">
+<div class="section-head"><div><h2>캐릭터 도감</h2><p>이미지 카드로 빠르게 비교 · 카드를 누르면 상세 통계를 확인할 수 있어요.</p></div><input id="charSearch" placeholder="캐릭터 검색…" style="max-width:240px"></div>
+<div id="characterDetail"></div><div id="characterGrid" class="character-grid"></div>
+<details style="margin-top:18px"><summary style="cursor:pointer;color:var(--muted);padding:8px 0">표 형식 통계 보기</summary><div class="table-wrap" style="margin-top:8px"><table><thead><tr><th>캐릭터</th><th class="num">픽</th><th class="num">픽률</th><th class="num">승</th><th class="num">패</th><th class="num">승률</th><th class="num">밴</th><th class="num">밴률</th><th class="num">평균 팀 순위*</th></tr></thead><tbody id="characterRows"></tbody></table></div></details>
+<p class="footer-note">* 현재 기록은 팀 승패만 있으므로 순위 데이터는 없습니다. 승률은 해당 캐릭터를 픽한 경기에서 소속 팀이 이긴 비율입니다. 이미지가 없는 캐릭터도 통계에는 포함됩니다.</p>
+</section>
+<section id="players" class="view">
+<div class="section-head"><div><h2>개인 통계</h2><p>회전별 팀 구성에 따라 참가 경기와 승패를 합산</p></div><input id="playerSearch" placeholder="참가자 검색…" style="max-width:240px"></div>
+<div class="table-wrap"><table><thead><tr><th>참가자</th><th class="num">참가 경기</th><th class="num">승</th><th class="num">패</th><th class="num">승률</th><th>최다 픽 캐릭터</th></tr></thead><tbody id="playerRows"></tbody></table></div>
+<div class="section-head"><div><h2>개인별 캐릭터 사용 기록</h2><p>선수와 픽의 대응 관계가 확인된 경기만 표시합니다.</p></div></div>
+<div class="table-wrap"><table><thead><tr><th>참가자</th><th>캐릭터</th><th class="num">픽</th><th class="num">승</th><th class="num">승률</th></tr></thead><tbody id="playerCharRows"></tbody></table></div>
+</section>
+<section id="matches" class="view">
+<div class="section-head"><div><h2>전체 경기 기록</h2><p id="matchCount"></p></div></div><div id="matchList"></div>
+</section>
+<p class="footer-note">기록 갱신 시 사이트 관리자가 전적 데이터를 업데이트합니다. 통계는 공개된 기록을 기준으로 계산됩니다.</p>
+</main>
+<script>
+let playerAliases={};
+function displayPlayer(name){return playerAliases[name]||name}
+const UNKNOWN='[알 수 없음]';
+const normBan = s => ['??','?','미상','알 수 없음','[알 수 없음]'].includes((s||'').trim()) ? UNKNOWN : (s||'').trim();
+let matches=[];
+async function loadPublicData(){
+ try{
+  const response=await fetch('./data.json',{cache:'no-store'});
+  if(!response.ok)throw new Error('data.json을 불러오지 못했습니다.');
+  const data=await response.json();
+  matches=Array.isArray(data)?data:(Array.isArray(data.matches)?data.matches:[]);
+  playerAliases=Array.isArray(data)?{}:(data.playerAliases||{});
+  render();
+ }catch(error){
+  document.getElementById('metrics').innerHTML='<div class="card">전적 데이터를 불러오지 못했습니다. 관리자에게 문의하세요.</div>';
+  document.getElementById('recentMatches').textContent='data.json 파일이 사이트와 같은 폴더에 있는지 확인하세요.';
+ }
+}
+function pct(a,b){return b?(100*a/b).toFixed(2).replace(/\.00$/,'')+'%':'0%'}
+function fmtDate(d){return d?d.replaceAll('-','.'):''}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function allChars(x){return [...(x.team1Chars||[]),...(x.team2Chars||[])]}
+function allPlayers(x){return [...(x.team1Players||[]),...(x.team2Players||[])]}
+function teamOf(x,p){if((x.team1Players||[]).includes(p))return 1;if((x.team2Players||[]).includes(p))return 2;return 0}
+function isWin(x,t){return x.winner===String(t)}
+const CHAR_FILES={
+ '아비게일':'Abigail.png','아델라':'Adela.png','아디나':'Adina.png','아드리아나':'Adriana.png','에이든':'Aiden.png','알렉스':'Alex.png','알론소':'Alonso.png','아르다':'Arda.png','아야':'Aya.png','바바라':'Barbara.png','버니스':'bERnice.png','비앙카':'Bianca.png','비형':'Bihyung.png','블레어':'Blair.png','카밀로':'Camilo.png','캐시':'Cathy.png','셀린':'Celine.png','샬럿':'Charlotte.png','키아라':'Chiara.png','클로에':'Chloe.png','코렐라인':'Coraline.png','크레이버':'CravER.png','다니엘':'Daniel.png','다르코':'Darko.png','데비&마를렌':'DebiMarlene.png','에키온':'Echion.png','엘레나':'Elena.png','일레븐':'Eleven.png','엠마':'Emma.png','에스텔':'Estelle.png','에바':'Eva.png','펠릭스':'Felix.png','펜리르':'Fenrir.png','피올로':'Piolo.png','가넷':'Garnet.png','하트':'Hart.png','헤이즈':'Haze.png','헨리':'Henry.png','히스이':'Hisui.png','혜진':'Hyejin.png','현우':'Hyunwoo.png','이렘':'Irem.png','아이작':'Isaac.png','아이솔':'Isol.png','이슈트반':'Istvan.png','재키':'Jackie.png','얀':'Jan.png','제니':'Jenny.png','요한':'Johann.png','유스티나':'Justyna.png','칼라':'Karla.png','카티야':'Katja.png','케네스':'Kenneth.png','라우라':'Laura.png','레니':'Leni.png','르노어':'Lenore.png','레녹스':'Lenox.png','레온':'Leon.png','리다이린':'Li Dailin.png','루시아':'Lucia.png','루크':'Luke.png','리앙':'Ly anh.png','매그너스':'Magnus.png','마이':'Mai.png','마커스':'Markus.png','마르티나':'Martina.png','미르카':'Mirka.png','나딘':'Nadine.png','나타폰':'Nathapon.png','니아':'NiaH.png','니키':'Nicky.png','프리야':'Priya.png','리오':'Rio.png','로지':'Rozzi.png','세레스':'Seres.png','쇼이치':'Shoichi.png','실비아':'Silvia.png','시셀라':'Sissela.png','수아':'Sua.png','타지아':'Tazia.png','테오도르':'Theodore.png','띠아':'Tia.png','츠바메':'Tsubame.png','바냐':'Vanya.png','윌리엄':'William.png','쉬우카이':'Xiukai.png','쉬엔린':'xuelin.png','유키':'Yuki.png','유민':'YuMin.png','자히르':'Zahir.png'
+};
+function charImage(name){const file=CHAR_FILES[name];return file?'assets/'+encodeURIComponent(file).replaceAll('%20','%20'):''}
+function pickChips(chars){return `<div class="pick-strip">${(chars||[]).map(c=>{const src=charImage(c);return `<span class="pick-chip">${src?`<img src="${src}" alt="" loading="lazy" onerror="this.style.display='none'">`:'<span class="missing">◆</span>'}<span>${esc(c)}</span></span>`}).join('')}</div>`}
+function charStats(){
+ const s={};
+ // 이미지/캐릭터 목록 전체를 먼저 등록해, 아직 기록이 없는 캐릭터도 0으로 표시한다.
+ Object.keys(CHAR_FILES).forEach(name=>{s[name]={name,picks:0,wins:0,losses:0}});
+ let total=0;matches.forEach(x=>allChars(x).forEach(c=>{total++;if(!s[c])s[c]={name:c,picks:0,wins:0,losses:0};s[c].picks++;const t=(x.team1Chars||[]).includes(c)&&!(x.team2Chars||[]).includes(c)?1:(x.team2Chars||[]).includes(c)&&!(x.team1Chars||[]).includes(c)?2:0;}));
+ // Count per team array, not by name lookup, so duplicate picks are handled correctly.
+ Object.keys(s).forEach(k=>{s[k].wins=0;s[k].losses=0});
+ matches.forEach(x=>{[1,2].forEach(t=>{const arr=t===1?x.team1Chars:x.team2Chars;arr.forEach(c=>{if(!s[c])s[c]={name:c,picks:0,wins:0,losses:0};if(x.winner==='draw')return;if(isWin(x,t))s[c].wins++;else s[c].losses++})})});
+ const bans={};let banTotal=0;matches.forEach(x=>(x.bans||[]).forEach(raw=>{const b=normBan(raw);bans[b]=(bans[b]||0)+1;banTotal++}));
+ return {rows:Object.values(s).map(o=>({...o,rate:total?o.picks/total:0,winrate:o.picks?o.wins/o.picks:0,bans:bans[o.name]||0,banrate:banTotal?(bans[o.name]||0)/banTotal:0})).sort((a,b)=>b.picks-a.picks||b.winrate-a.winrate||a.name.localeCompare(b.name,'ko')),total,bans,banTotal}
+}
+function playerStats(){
+ const s={};matches.forEach(x=>{[1,2].forEach(t=>{const ps=t===1?x.team1Players:x.team2Players,cs=t===1?x.team1Chars:x.team2Chars;ps.forEach((p,i)=>{const shown=displayPlayer(p);if(!s[shown])s[shown]={name:shown,games:0,wins:0,losses:0,chars:{},sourceNames:[]};if(!s[shown].sourceNames.includes(p))s[shown].sourceNames.push(p);s[shown].games++;if(x.winner!=='draw'){if(isWin(x,t))s[shown].wins++;else s[shown].losses++}const c=cs[i]||'캐릭터 미기록';if(!s[shown].chars[c])s[shown].chars[c]={picks:0,wins:0};s[shown].chars[c].picks++;if(x.winner!=='draw'&&isWin(x,t))s[shown].chars[c].wins++})})});
+ return Object.values(s).map(p=>{const top=Object.entries(p.chars).sort((a,b)=>b[1].picks-a[1].picks||b[1].wins-a[1].wins)[0];return {...p,rate:p.games?p.wins/p.games:0,top:top?top[0]+' ('+top[1].picks+')':'—'}}).sort((a,b)=>b.rate-a.rate||b.wins-a.wins||b.games-a.games||a.name.localeCompare(b.name,'ko'))
+}
+function matchCard(x,index){return `<article class="match-card"><div class="match-top"><div><strong>${esc(fmtDate(x.date))} · ${esc(x.session)}</strong><div class="match-id">${x.id?'게임 ID '+esc(x.id):'게임 ID 미입력'} · ${esc(x.winner==='draw'?'무승부 / 무효':x.winner+'팀 승리')}</div></div></div><div class="teams"><div class="team"><strong>1팀 ${x.winner==='1'?'<span class="win">WIN</span>':''}</strong><p>참가자: ${esc((x.team1Players||[]).map(displayPlayer).join(', '))}</p><p>픽</p>${pickChips(x.team1Chars)}</div><div class="team"><strong>2팀 ${x.winner==='2'?'<span class="win">WIN</span>':''}</strong><p>참가자: ${esc((x.team2Players||[]).map(displayPlayer).join(', '))}</p><p>픽</p>${pickChips(x.team2Chars)}</div></div><p class="footer-note">밴: ${esc((x.bans||[]).map(normBan).join(', ')||'기록 없음')}${x.notes?' · 메모: '+esc(x.notes):''}</p>${x.csvStats?`<details class="footer-note"><summary style="cursor:pointer">다운로드 상세 통계 보기 (킬·어시스트)</summary><div class="table-wrap"><table><thead><tr><th>플레이어</th><th>캐릭터</th><th class="num">순위</th><th class="num">팀 킬</th><th class="num">킬</th><th class="num">어시스트</th></tr></thead><tbody>${x.csvStats.map(p=>`<tr><td>${esc(p.nickname)}</td><td>${esc(p.character)}</td><td class="num">${esc(p.rank==='1'?'승리':p.rank==='2'?'패배':p.rank||'—')}</td><td class="num">${esc(p.teamKill)}</td><td class="num">${esc(p.kill)}</td><td class="num">${esc(p.assist)}</td></tr>`).join('')}</tbody></table></div></details>`:''}</article>`}
+function showCharacterDetail(name){window.selectedCharacter=name;const c=charStats().rows.find(x=>x.name===name);if(!c)return;const src=charImage(name);const el=document.getElementById('characterDetail');if(!el)return;el.innerHTML=`<div class="character-detail">${src?`<img src="${src}" alt="${esc(name)}" onerror="this.style.display='none'">`:'<div></div>'}<div><h3>${esc(name)}</h3><p>픽 ${c.picks}회 · 승 ${c.wins}회 · 패 ${c.losses}회</p><p>픽률 ${pct(c.picks,charStats().total)} · 승률 ${pct(c.wins,c.picks)} · 밴 ${c.bans}회 (${pct(c.bans,charStats().banTotal)})</p><p>승률은 해당 캐릭터를 선택한 경기의 팀 승패 기준입니다.</p></div></div>`;}
+function render(){
+ const banSelect=document.getElementById('banMatchSelect');if(banSelect){const old=banSelect.value;banSelect.innerHTML=matches.map((x,i)=>`<option value="${i}">${esc(fmtDate(x.date))} · ${esc(x.session||'경기')} · ${esc(x.id?'ID '+x.id:'ID 미입력')} · ${esc((x.team1Chars||[]).join(', '))}</option>`).join('');if(matches.length){if([...banSelect.options].some(o=>o.value===old))banSelect.value=old;else banSelect.value=String(matches.length-1)}else banSelect.innerHTML='<option value="">먼저 경기를 추가하세요</option>'}
+ const cs=charStats(),ps=playerStats(),wins=matches.filter(x=>x.winner!=='draw').length,win1=matches.filter(x=>x.winner==='1').length,win2=matches.filter(x=>x.winner==='2').length,players=new Set(matches.flatMap(allPlayers)).size;
+ document.getElementById('metrics').innerHTML=[['기록 경기',matches.length,'경기'],['참가자 수',players,'명'],['전체 픽 슬롯',cs.total,'픽'],['기록된 밴 슬롯',cs.banTotal,'밴']].map(a=>`<div class="card"><div class="metric-label">${a[0]}</div><div class="metric">${a[1]} <small>${a[2]}</small></div></div>`).join('');
+ const top=cs.rows.slice(0,6),max=top[0]?.picks||1;document.getElementById('topPicks').innerHTML=top.map(c=>`<div class="bar-row"><span>${esc(c.name)}</span><div class="bar-bg"><div class="bar" style="width:${c.picks/max*100}%"></div></div><strong>${c.picks}회</strong></div>`).join('')||'<div class="empty">기록 없음</div>';
+ const bans=Object.entries(cs.bans).sort((a,b)=>b[1]-a[1]);const bmax=bans[0]?.[1]||1;document.getElementById('topBans').innerHTML=bans.map(([n,v])=>`<div class="bar-row"><span class="${n===UNKNOWN?'unknown':''}">${esc(n)}</span><div class="bar-bg"><div class="bar" style="width:${v/bmax*100}%"></div></div><strong>${v}회</strong></div>`).join('')||'<div class="empty">밴 기록 없음</div>';
+ document.getElementById('recentMatches').innerHTML=matches.slice().reverse().slice(0,5).map(x=>matchCard(x,matches.indexOf(x))).join('')||'<div class="empty">경기 기록이 없습니다.</div>';
+ const q=(document.getElementById('charSearch')?.value||'').trim().toLowerCase();document.getElementById('characterRows').innerHTML=cs.rows.filter(c=>c.name.toLowerCase().includes(q)).map(c=>`<tr><td>${esc(c.name)}</td><td class="num">${c.picks}</td><td class="num">${pct(c.picks,cs.total)}</td><td class="num win">${c.wins}</td><td class="num loss">${c.losses}</td><td class="num">${pct(c.wins,c.picks)}</td><td class="num">${c.bans}</td><td class="num">${pct(c.bans,cs.banTotal)}</td><td class="num">—</td></tr>`).join('')||'<tr><td colspan="9" class="empty">검색 결과 없음</td></tr>';
+ const filteredChars=cs.rows.filter(c=>c.name.toLowerCase().includes(q));
+ document.getElementById('characterGrid').innerHTML=filteredChars.map(c=>{const src=charImage(c.name);return `<button class="character-card" onclick="showCharacterDetail('${esc(c.name).replaceAll("'","\\'")}')"><div class="character-art">${src?`<img src="${src}" alt="${esc(c.name)}" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'no-art\'>◇</span>'">`:'<span class="no-art">◇</span>'}</div><div class="character-info"><div class="character-name">${esc(c.name)}</div><div class="character-sub">픽 ${c.picks}회 · 밴 ${c.bans}회</div><div class="character-stats"><div class="character-stat"><span>픽률</span><strong>${pct(c.picks,cs.total)}</strong></div><div class="character-stat"><span>승률</span><strong class="character-wr">${pct(c.wins,c.picks)}</strong></div></div></div></button>`}).join('')||'<div class="empty">검색 결과 없음</div>';
+ if(window.selectedCharacter && filteredChars.some(c=>c.name===window.selectedCharacter))showCharacterDetail(window.selectedCharacter);else if(!filteredChars.length)document.getElementById('characterDetail').innerHTML='';
+
+ const pq=(document.getElementById('playerSearch')?.value||'').trim().toLowerCase();document.getElementById('playerRows').innerHTML=ps.filter(p=>(p.name+' '+(p.sourceNames||[]).join(' ')).toLowerCase().includes(pq)).map(p=>`<tr><td>${esc(p.name)}${p.sourceNames?.length>1?`<div class="hint">통합 닉네임: ${esc(p.sourceNames.join(', '))}</div>`:''}</td><td class="num">${p.games}</td><td class="num win">${p.wins}</td><td class="num loss">${p.losses}</td><td class="num">${pct(p.wins,p.games)}</td><td>${esc(p.top)}</td></tr>`).join('')||'<tr><td colspan="6" class="empty">검색 결과 없음</td></tr>';
+ let pc=[];ps.forEach(p=>Object.entries(p.chars).forEach(([c,v])=>pc.push({p:p.name,c,...v}))); pc.sort((a,b)=>b.picks-a.picks||a.p.localeCompare(b.p,'ko'));document.getElementById('playerCharRows').innerHTML=(pc.length?pc.map(x=>`<tr><td>${esc(x.p)}</td><td>${esc(x.c)}</td><td class="num">${x.picks}</td><td class="num">${x.wins}</td><td class="num">${pct(x.wins,x.picks)}</td></tr>`).join(''):'<tr><td colspan="5" class="empty">기존 수기 기록에는 선수별 픽 대응 정보가 없어 표시하지 않습니다. 새 경기 추가 시 참가자와 캐릭터를 같은 순서로 입력하면 해당 경기부터 집계됩니다.</td></tr>');
+ document.getElementById('matchCount').textContent=`총 ${matches.length}경기 · 1팀 ${win1}승 / 2팀 ${win2}승 / 무효 ${matches.length-wins}경기`;
+ document.getElementById('matchList').innerHTML=matches.slice().reverse().map(x=>matchCard(x,matches.indexOf(x))).join('')||'<div class="empty">경기 기록이 없습니다.</div>';
+}
+function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.view===id));}
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>showView(t.dataset.view)));
+document.getElementById('charSearch').addEventListener('input',render);document.getElementById('playerSearch').addEventListener('input',render);
+document.getElementById('charSearch').addEventListener('input',render);document.getElementById('playerSearch').addEventListener('input',render);
+loadPublicData();
+</script>
+</body>
+</html>
