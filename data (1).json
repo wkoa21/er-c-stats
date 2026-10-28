@@ -1,0 +1,921 @@
+{
+  "matches": [
+    {
+      "date": "2026-10-23",
+      "session": "게임 결과 CSV",
+      "id": "66834377",
+      "team1Players": [
+        "다케",
+        "다트",
+        "실버나라",
+        "Depa"
+      ],
+      "team2Players": [
+        "RamenIsGod",
+        "나렝씌",
+        "InnocentCry",
+        "밀감찹쌀떡"
+      ],
+      "team1Chars": [
+        "히스이",
+        "유키",
+        "리오",
+        "세레스"
+      ],
+      "team2Chars": [
+        "다르코",
+        "히스이",
+        "클로에",
+        "세레스"
+      ],
+      "winner": "1",
+      "bans": [
+        "히스이",
+        "세레스"
+      ],
+      "notes": "CSV 가져오기 · 팀 순위 1 / 2위",
+      "individualMappingKnown": true,
+      "csvStats": [
+        {
+          "nickname": "다케",
+          "character": "히스이",
+          "rank": "1",
+          "teamKill": "27",
+          "kill": "9",
+          "assist": "16"
+        },
+        {
+          "nickname": "다트",
+          "character": "유키",
+          "rank": "1",
+          "teamKill": "27",
+          "kill": "10",
+          "assist": "16"
+        },
+        {
+          "nickname": "실버나라",
+          "character": "리오",
+          "rank": "1",
+          "teamKill": "27",
+          "kill": "6",
+          "assist": "13"
+        },
+        {
+          "nickname": "Depa",
+          "character": "세레스",
+          "rank": "1",
+          "teamKill": "27",
+          "kill": "2",
+          "assist": "21"
+        },
+        {
+          "nickname": "RamenIsGod",
+          "character": "다르코",
+          "rank": "2",
+          "teamKill": "19",
+          "kill": "6",
+          "assist": "9"
+        },
+        {
+          "nickname": "나렝씌",
+          "character": "히스이",
+          "rank": "2",
+          "teamKill": "19",
+          "kill": "3",
+          "assist": "14"
+        },
+        {
+          "nickname": "InnocentCry",
+          "character": "클로에",
+          "rank": "2",
+          "teamKill": "19",
+          "kill": "8",
+          "assist": "10"
+        },
+        {
+          "nickname": "밀감찹쌀떡",
+          "character": "세레스",
+          "rank": "2",
+          "teamKill": "19",
+          "kill": "2",
+          "assist": "17"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "session": "게임 결과 CSV",
+      "id": "66835288",
+      "team1Players": [
+        "다케",
+        "실버나라",
+        "다트",
+        "Depa"
+      ],
+      "team2Players": [
+        "밀감찹쌀떡",
+        "InnocentCry",
+        "RamenIsGod",
+        "나렝씌"
+      ],
+      "team1Chars": [
+        "유민",
+        "코렐라인",
+        "루시아",
+        "헨리"
+      ],
+      "team2Chars": [
+        "미르카",
+        "나딘",
+        "이슈트반",
+        "유민"
+      ],
+      "winner": "2",
+      "bans": [
+        "다니엘",
+        "미르카"
+      ],
+      "notes": "CSV 가져오기 · 팀 순위 2 / 1위",
+      "individualMappingKnown": true,
+      "csvStats": [
+        {
+          "nickname": "다케",
+          "character": "유민",
+          "rank": "2",
+          "teamKill": "19",
+          "kill": "2",
+          "assist": "14"
+        },
+        {
+          "nickname": "실버나라",
+          "character": "코렐라인",
+          "rank": "2",
+          "teamKill": "19",
+          "kill": "4",
+          "assist": "10"
+        },
+        {
+          "nickname": "다트",
+          "character": "루시아",
+          "rank": "2",
+          "teamKill": "19",
+          "kill": "10",
+          "assist": "7"
+        },
+        {
+          "nickname": "Depa",
+          "character": "헨리",
+          "rank": "2",
+          "teamKill": "19",
+          "kill": "3",
+          "assist": "10"
+        },
+        {
+          "nickname": "밀감찹쌀떡",
+          "character": "미르카",
+          "rank": "1",
+          "teamKill": "24",
+          "kill": "2",
+          "assist": "13"
+        },
+        {
+          "nickname": "InnocentCry",
+          "character": "나딘",
+          "rank": "1",
+          "teamKill": "24",
+          "kill": "9",
+          "assist": "8"
+        },
+        {
+          "nickname": "RamenIsGod",
+          "character": "이슈트반",
+          "rank": "1",
+          "teamKill": "24",
+          "kill": "11",
+          "assist": "7"
+        },
+        {
+          "nickname": "나렝씌",
+          "character": "유민",
+          "rank": "1",
+          "teamKill": "24",
+          "kill": "2",
+          "assist": "10"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "session": "게임 결과 CSV",
+      "id": "66836710",
+      "team1Players": [
+        "다케",
+        "Depa",
+        "다트",
+        "실버나라"
+      ],
+      "team2Players": [
+        "InnocentCry",
+        "RamenIsGod",
+        "밀감찹쌀떡",
+        "나렝씌"
+      ],
+      "team1Chars": [
+        "펠릭스",
+        "요한",
+        "유키",
+        "레니"
+      ],
+      "team2Chars": [
+        "칼라",
+        "펜리르",
+        "알론소",
+        "비앙카"
+      ],
+      "winner": "1",
+      "bans": [],
+      "notes": "CSV 가져오기 · 팀 순위 1 / 2위",
+      "individualMappingKnown": true,
+      "csvStats": [
+        {
+          "nickname": "다케",
+          "character": "펠릭스",
+          "rank": "1",
+          "teamKill": "24",
+          "kill": "16",
+          "assist": "7"
+        },
+        {
+          "nickname": "Depa",
+          "character": "요한",
+          "rank": "1",
+          "teamKill": "24",
+          "kill": "0",
+          "assist": "23"
+        },
+        {
+          "nickname": "다트",
+          "character": "유키",
+          "rank": "1",
+          "teamKill": "24",
+          "kill": "8",
+          "assist": "11"
+        },
+        {
+          "nickname": "실버나라",
+          "character": "레니",
+          "rank": "1",
+          "teamKill": "24",
+          "kill": "0",
+          "assist": "23"
+        },
+        {
+          "nickname": "InnocentCry",
+          "character": "칼라",
+          "rank": "2",
+          "teamKill": "21",
+          "kill": "9",
+          "assist": "9"
+        },
+        {
+          "nickname": "RamenIsGod",
+          "character": "펜리르",
+          "rank": "2",
+          "teamKill": "21",
+          "kill": "5",
+          "assist": "14"
+        },
+        {
+          "nickname": "밀감찹쌀떡",
+          "character": "알론소",
+          "rank": "2",
+          "teamKill": "21",
+          "kill": "3",
+          "assist": "13"
+        },
+        {
+          "nickname": "나렝씌",
+          "character": "비앙카",
+          "rank": "2",
+          "teamKill": "21",
+          "kill": "4",
+          "assist": "15"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "session": "게임 결과 CSV",
+      "id": "66835927",
+      "team1Players": [
+        "다트",
+        "Depa",
+        "실버나라",
+        "다케"
+      ],
+      "team2Players": [
+        "RamenIsGod",
+        "InnocentCry",
+        "나렝씌",
+        "밀감찹쌀떡"
+      ],
+      "team1Chars": [
+        "유키",
+        "바바라",
+        "리오",
+        "카밀로"
+      ],
+      "team2Chars": [
+        "데비&마를렌",
+        "윌리엄",
+        "자히르",
+        "가넷"
+      ],
+      "winner": "1",
+      "bans": [],
+      "notes": "CSV 가져오기 · 팀 순위 1 / 2위",
+      "individualMappingKnown": true,
+      "csvStats": [
+        {
+          "nickname": "다트",
+          "character": "유키",
+          "rank": "1",
+          "teamKill": "26",
+          "kill": "9",
+          "assist": "8"
+        },
+        {
+          "nickname": "Depa",
+          "character": "바바라",
+          "rank": "1",
+          "teamKill": "26",
+          "kill": "5",
+          "assist": "13"
+        },
+        {
+          "nickname": "실버나라",
+          "character": "리오",
+          "rank": "1",
+          "teamKill": "26",
+          "kill": "6",
+          "assist": "12"
+        },
+        {
+          "nickname": "다케",
+          "character": "카밀로",
+          "rank": "1",
+          "teamKill": "26",
+          "kill": "6",
+          "assist": "17"
+        },
+        {
+          "nickname": "RamenIsGod",
+          "character": "데비&마를렌",
+          "rank": "2",
+          "teamKill": "19",
+          "kill": "5",
+          "assist": "10"
+        },
+        {
+          "nickname": "InnocentCry",
+          "character": "윌리엄",
+          "rank": "2",
+          "teamKill": "19",
+          "kill": "6",
+          "assist": "6"
+        },
+        {
+          "nickname": "나렝씌",
+          "character": "자히르",
+          "rank": "2",
+          "teamKill": "19",
+          "kill": "3",
+          "assist": "14"
+        },
+        {
+          "nickname": "밀감찹쌀떡",
+          "character": "가넷",
+          "rank": "2",
+          "teamKill": "19",
+          "kill": "5",
+          "assist": "11"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "session": "게임 결과 CSV",
+      "id": "67063184",
+      "team1Players": [
+        "다케",
+        "실버나라",
+        "工具tol",
+        "밀감찹쌀떡"
+      ],
+      "team2Players": [
+        "민주주의",
+        "RamenIsGod",
+        "쥐님",
+        "마스유"
+      ],
+      "team1Chars": [
+        "히스이",
+        "니아",
+        "재키",
+        "세레스"
+      ],
+      "team2Chars": [
+        "에키온",
+        "다니엘",
+        "일레븐",
+        "아야"
+      ],
+      "winner": "1",
+      "bans": [
+        "히스이",
+        "세레스"
+      ],
+      "notes": "CSV 가져오기 · 팀 순위 1 / 2위",
+      "individualMappingKnown": true,
+      "csvStats": [
+        {
+          "nickname": "다케",
+          "character": "히스이",
+          "rank": "1",
+          "teamKill": "25",
+          "kill": "7",
+          "assist": "13"
+        },
+        {
+          "nickname": "실버나라",
+          "character": "니아",
+          "rank": "1",
+          "teamKill": "24",
+          "kill": "4",
+          "assist": "8"
+        },
+        {
+          "nickname": "工具tol",
+          "character": "재키",
+          "rank": "1",
+          "teamKill": "24",
+          "kill": "12",
+          "assist": "10"
+        },
+        {
+          "nickname": "밀감찹쌀떡",
+          "character": "세레스",
+          "rank": "1",
+          "teamKill": "25",
+          "kill": "2",
+          "assist": "19"
+        },
+        {
+          "nickname": "민주주의",
+          "character": "에키온",
+          "rank": "2",
+          "teamKill": "27",
+          "kill": "11",
+          "assist": "7"
+        },
+        {
+          "nickname": "RamenIsGod",
+          "character": "다니엘",
+          "rank": "2",
+          "teamKill": "27",
+          "kill": "8",
+          "assist": "9"
+        },
+        {
+          "nickname": "쥐님",
+          "character": "일레븐",
+          "rank": "2",
+          "teamKill": "27",
+          "kill": "2",
+          "assist": "21"
+        },
+        {
+          "nickname": "마스유",
+          "character": "아야",
+          "rank": "2",
+          "teamKill": "27",
+          "kill": "6",
+          "assist": "17"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "session": "게임 결과 CSV",
+      "id": "67064224",
+      "team1Players": [
+        "다케",
+        "밀감찹쌀떡",
+        "工具tol",
+        "실버나라"
+      ],
+      "team2Players": [
+        "마스유",
+        "쥐님",
+        "민주주의",
+        "RamenIsGod"
+      ],
+      "team1Chars": [
+        "크레이버",
+        "다르코",
+        "카티야",
+        "니키"
+      ],
+      "team2Chars": [
+        "다르코",
+        "에스텔",
+        "셀린",
+        "마커스"
+      ],
+      "winner": "2",
+      "bans": [
+        "피올로",
+        "셀린"
+      ],
+      "notes": "CSV 가져오기 · 팀 순위 2 / 1위",
+      "individualMappingKnown": true,
+      "csvStats": [
+        {
+          "nickname": "다케",
+          "character": "크레이버",
+          "rank": "2",
+          "teamKill": "13",
+          "kill": "2",
+          "assist": "6"
+        },
+        {
+          "nickname": "밀감찹쌀떡",
+          "character": "다르코",
+          "rank": "2",
+          "teamKill": "13",
+          "kill": "1",
+          "assist": "7"
+        },
+        {
+          "nickname": "工具tol",
+          "character": "카티야",
+          "rank": "2",
+          "teamKill": "13",
+          "kill": "8",
+          "assist": "4"
+        },
+        {
+          "nickname": "실버나라",
+          "character": "니키",
+          "rank": "2",
+          "teamKill": "13",
+          "kill": "2",
+          "assist": "9"
+        },
+        {
+          "nickname": "마스유",
+          "character": "다르코",
+          "rank": "1",
+          "teamKill": "24",
+          "kill": "11",
+          "assist": "6"
+        },
+        {
+          "nickname": "쥐님",
+          "character": "에스텔",
+          "rank": "1",
+          "teamKill": "24",
+          "kill": "4",
+          "assist": "19"
+        },
+        {
+          "nickname": "민주주의",
+          "character": "셀린",
+          "rank": "1",
+          "teamKill": "24",
+          "kill": "8",
+          "assist": "13"
+        },
+        {
+          "nickname": "RamenIsGod",
+          "character": "마커스",
+          "rank": "1",
+          "teamKill": "24",
+          "kill": "1",
+          "assist": "14"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "session": "게임 결과 CSV",
+      "id": "67065423",
+      "team1Players": [
+        "밀감찹쌀떡",
+        "工具tol",
+        "실버나라",
+        "다케"
+      ],
+      "team2Players": [
+        "마스유",
+        "쥐님",
+        "민주주의",
+        "RamenIsGod"
+      ],
+      "team1Chars": [
+        "가넷",
+        "라우라",
+        "코렐라인",
+        "아이솔"
+      ],
+      "team2Chars": [
+        "다르코",
+        "레녹스",
+        "블레어",
+        "유민"
+      ],
+      "winner": "2",
+      "bans": [
+        "윌리엄",
+        "매그너스"
+      ],
+      "notes": "CSV 가져오기 · 팀 순위 2 / 1위",
+      "individualMappingKnown": true,
+      "csvStats": [
+        {
+          "nickname": "밀감찹쌀떡",
+          "character": "가넷",
+          "rank": "2",
+          "teamKill": "15",
+          "kill": "5",
+          "assist": "7"
+        },
+        {
+          "nickname": "工具tol",
+          "character": "라우라",
+          "rank": "2",
+          "teamKill": "15",
+          "kill": "9",
+          "assist": "5"
+        },
+        {
+          "nickname": "실버나라",
+          "character": "코렐라인",
+          "rank": "2",
+          "teamKill": "15",
+          "kill": "0",
+          "assist": "13"
+        },
+        {
+          "nickname": "다케",
+          "character": "아이솔",
+          "rank": "2",
+          "teamKill": "15",
+          "kill": "1",
+          "assist": "9"
+        },
+        {
+          "nickname": "마스유",
+          "character": "다르코",
+          "rank": "1",
+          "teamKill": "27",
+          "kill": "10",
+          "assist": "8"
+        },
+        {
+          "nickname": "쥐님",
+          "character": "레녹스",
+          "rank": "1",
+          "teamKill": "26",
+          "kill": "5",
+          "assist": "19"
+        },
+        {
+          "nickname": "민주주의",
+          "character": "블레어",
+          "rank": "1",
+          "teamKill": "26",
+          "kill": "6",
+          "assist": "10"
+        },
+        {
+          "nickname": "RamenIsGod",
+          "character": "유민",
+          "rank": "1",
+          "teamKill": "27",
+          "kill": "6",
+          "assist": "15"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "session": "게임 결과 CSV",
+      "id": "67064751",
+      "team1Players": [
+        "다케",
+        "밀감찹쌀떡",
+        "실버나라",
+        "工具tol"
+      ],
+      "team2Players": [
+        "마스유",
+        "쥐님",
+        "민주주의",
+        "RamenIsGod"
+      ],
+      "team1Chars": [
+        "얀",
+        "미르카",
+        "코렐라인",
+        "카티야"
+      ],
+      "team2Chars": [
+        "매그너스",
+        "미르카",
+        "윌리엄",
+        "유키"
+      ],
+      "winner": "2",
+      "bans": [
+        "다르코",
+        "블레어"
+      ],
+      "notes": "CSV 가져오기 · 팀 순위 2 / 1위",
+      "individualMappingKnown": true,
+      "csvStats": [
+        {
+          "nickname": "다케",
+          "character": "얀",
+          "rank": "2",
+          "teamKill": "13",
+          "kill": "4",
+          "assist": "7"
+        },
+        {
+          "nickname": "밀감찹쌀떡",
+          "character": "미르카",
+          "rank": "2",
+          "teamKill": "13",
+          "kill": "1",
+          "assist": "9"
+        },
+        {
+          "nickname": "실버나라",
+          "character": "코렐라인",
+          "rank": "2",
+          "teamKill": "13",
+          "kill": "4",
+          "assist": "8"
+        },
+        {
+          "nickname": "工具tol",
+          "character": "카티야",
+          "rank": "2",
+          "teamKill": "13",
+          "kill": "4",
+          "assist": "7"
+        },
+        {
+          "nickname": "마스유",
+          "character": "매그너스",
+          "rank": "1",
+          "teamKill": "20",
+          "kill": "6",
+          "assist": "12"
+        },
+        {
+          "nickname": "쥐님",
+          "character": "미르카",
+          "rank": "1",
+          "teamKill": "20",
+          "kill": "3",
+          "assist": "14"
+        },
+        {
+          "nickname": "민주주의",
+          "character": "윌리엄",
+          "rank": "1",
+          "teamKill": "20",
+          "kill": "9",
+          "assist": "9"
+        },
+        {
+          "nickname": "RamenIsGod",
+          "character": "유키",
+          "rank": "1",
+          "teamKill": "20",
+          "kill": "2",
+          "assist": "16"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "session": "게임 결과 CSV",
+      "id": "67066094",
+      "team1Players": [
+        "다케",
+        "工具tol",
+        "밀감찹쌀떡",
+        "실버나라"
+      ],
+      "team2Players": [
+        "마스유",
+        "쥐님",
+        "민주주의",
+        "RamenIsGod"
+      ],
+      "team1Chars": [
+        "레온",
+        "헤이즈",
+        "세레스",
+        "카티야"
+      ],
+      "team2Chars": [
+        "니키",
+        "세레스",
+        "크레이버",
+        "다니엘"
+      ],
+      "winner": "2",
+      "bans": [
+        "``"
+      ],
+      "notes": "CSV 가져오기 · 팀 순위 2 / 1위",
+      "individualMappingKnown": true,
+      "csvStats": [
+        {
+          "nickname": "다케",
+          "character": "레온",
+          "rank": "2",
+          "teamKill": "25",
+          "kill": "6",
+          "assist": "10"
+        },
+        {
+          "nickname": "工具tol",
+          "character": "헤이즈",
+          "rank": "2",
+          "teamKill": "24",
+          "kill": "9",
+          "assist": "10"
+        },
+        {
+          "nickname": "밀감찹쌀떡",
+          "character": "세레스",
+          "rank": "2",
+          "teamKill": "24",
+          "kill": "2",
+          "assist": "15"
+        },
+        {
+          "nickname": "실버나라",
+          "character": "카티야",
+          "rank": "2",
+          "teamKill": "24",
+          "kill": "7",
+          "assist": "8"
+        },
+        {
+          "nickname": "마스유",
+          "character": "니키",
+          "rank": "1",
+          "teamKill": "28",
+          "kill": "4",
+          "assist": "15"
+        },
+        {
+          "nickname": "쥐님",
+          "character": "세레스",
+          "rank": "1",
+          "teamKill": "28",
+          "kill": "4",
+          "assist": "22"
+        },
+        {
+          "nickname": "민주주의",
+          "character": "크레이버",
+          "rank": "1",
+          "teamKill": "28",
+          "kill": "5",
+          "assist": "17"
+        },
+        {
+          "nickname": "RamenIsGod",
+          "character": "다니엘",
+          "rank": "1",
+          "teamKill": "28",
+          "kill": "15",
+          "assist": "6"
+        }
+      ]
+    }
+  ],
+  "playerAliases": {
+    "RamenIsGod": "라멘",
+    "나렝씌": "사아람",
+    "Depa": "데파",
+    "InnocentCry": "박지수"
+  }
+}
