@@ -40,6 +40,8 @@ label{display:block;font-size:13px;color:var(--muted);margin-bottom:5px}input,se
 .pick-strip{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}.pick-chip{display:flex;align-items:center;gap:5px;padding:3px 6px;border:1px solid #ffffff12;border-radius:8px;background:#11151d;font-size:12px}.pick-chip img{width:23px;height:30px;object-fit:contain}.pick-chip .missing{width:23px;height:30px;display:grid;place-items:center;color:var(--muted)}
 @media(max-width:760px){.character-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.character-art{height:125px}.character-detail{grid-template-columns:78px 1fr}.character-detail img{width:78px;height:108px}}
 @media(max-width:760px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.grid2{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.metric{font-size:25px}header{padding-top:23px;padding-bottom:23px}}
+a.tab{display:inline-block;color:var(--text);text-decoration:none}
+.plink{color:inherit;text-decoration:underline dotted;text-underline-offset:3px}.plink:hover{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -50,6 +52,7 @@ label{display:block;font-size:13px;color:var(--muted);margin-bottom:5px}input,se
 <button class="tab" data-view="characters">캐릭터 통계</button>
 <button class="tab" data-view="players">개인 통계</button>
 <button class="tab" data-view="matches">경기 기록</button>
+<a class="tab" href="profiles.html">프로필</a>
 
 </nav>
 <section id="dashboard" class="view active">
@@ -141,13 +144,13 @@ function render(){
  document.getElementById('characterGrid').innerHTML=filteredChars.map(c=>{const src=charImage(c.name);return `<button class="character-card" onclick="showCharacterDetail('${esc(c.name).replaceAll("'","\\'")}')"><div class="character-art">${src?`<img src="${src}" alt="${esc(c.name)}" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'no-art\'>◇</span>'">`:'<span class="no-art">◇</span>'}</div><div class="character-info"><div class="character-name">${esc(c.name)}</div><div class="character-sub">픽 ${c.picks}회 · 밴 ${c.bans}회</div><div class="character-stats"><div class="character-stat"><span>픽률</span><strong>${pct(c.picks,cs.total)}</strong></div><div class="character-stat"><span>승률</span><strong class="character-wr">${pct(c.wins,c.picks)}</strong></div></div></div></button>`}).join('')||'<div class="empty">검색 결과 없음</div>';
  if(window.selectedCharacter && filteredChars.some(c=>c.name===window.selectedCharacter))showCharacterDetail(window.selectedCharacter);else if(!filteredChars.length)document.getElementById('characterDetail').innerHTML='';
 
- const pq=(document.getElementById('playerSearch')?.value||'').trim().toLowerCase();document.getElementById('playerRows').innerHTML=ps.filter(p=>(p.name+' '+(p.sourceNames||[]).join(' ')).toLowerCase().includes(pq)).map(p=>`<tr><td>${esc(p.name)}${p.sourceNames?.length>1?`<div class="hint">통합 닉네임: ${esc(p.sourceNames.join(', '))}</div>`:''}</td><td class="num">${p.games}</td><td class="num win">${p.wins}</td><td class="num loss">${p.losses}</td><td class="num">${pct(p.wins,p.games)}</td><td>${esc(p.top)}</td></tr>`).join('')||'<tr><td colspan="6" class="empty">검색 결과 없음</td></tr>';
+ const pq=(document.getElementById('playerSearch')?.value||'').trim().toLowerCase();document.getElementById('playerRows').innerHTML=ps.filter(p=>(p.name+' '+(p.sourceNames||[]).join(' ')).toLowerCase().includes(pq)).map(p=>`<tr><td><a class="plink" href="profiles.html#${encodeURIComponent(p.name)}">${esc(p.name)}</a>${p.sourceNames?.length>1?`<div class="hint">통합 닉네임: ${esc(p.sourceNames.join(', '))}</div>`:''}</td><td class="num">${p.games}</td><td class="num win">${p.wins}</td><td class="num loss">${p.losses}</td><td class="num">${pct(p.wins,p.games)}</td><td>${esc(p.top)}</td></tr>`).join('')||'<tr><td colspan="6" class="empty">검색 결과 없음</td></tr>';
  let pc=[];ps.forEach(p=>Object.entries(p.chars).forEach(([c,v])=>pc.push({p:p.name,c,...v}))); pc.sort((a,b)=>b.picks-a.picks||a.p.localeCompare(b.p,'ko'));document.getElementById('playerCharRows').innerHTML=(pc.length?pc.map(x=>`<tr><td>${esc(x.p)}</td><td>${esc(x.c)}</td><td class="num">${x.picks}</td><td class="num">${x.wins}</td><td class="num">${pct(x.wins,x.picks)}</td></tr>`).join(''):'<tr><td colspan="5" class="empty">기존 수기 기록에는 선수별 픽 대응 정보가 없어 표시하지 않습니다. 새 경기 추가 시 참가자와 캐릭터를 같은 순서로 입력하면 해당 경기부터 집계됩니다.</td></tr>');
  document.getElementById('matchCount').textContent=`총 ${matches.length}경기 · 1팀 ${win1}승 / 2팀 ${win2}승 / 무효 ${matches.length-wins}경기`;
  document.getElementById('matchList').innerHTML=matches.slice().reverse().map(x=>matchCard(x,matches.indexOf(x))).join('')||'<div class="empty">경기 기록이 없습니다.</div>';
 }
 function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.view===id));}
-document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>showView(t.dataset.view)));
+document.querySelectorAll('.tab[data-view]').forEach(t=>t.addEventListener('click',()=>showView(t.dataset.view)));
 document.getElementById('charSearch').addEventListener('input',render);document.getElementById('playerSearch').addEventListener('input',render);
 document.getElementById('charSearch').addEventListener('input',render);document.getElementById('playerSearch').addEventListener('input',render);
 loadPublicData();

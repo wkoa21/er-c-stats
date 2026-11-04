@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>내전 참가자 프로필</title>
+<style>
+:root{color-scheme:dark;--bg:#101218;--panel:#191d27;--panel2:#202635;--line:#30384a;--text:#eef1f7;--muted:#a5aec0;--accent:#9b8cff;--green:#65d6a5;--red:#ff8585;--yellow:#f3ca78}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at top,#1a2030 0,#101218 48%);color:var(--text);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+header{padding:28px max(20px,calc((100vw - 1200px)/2)) 22px;border-bottom:1px solid var(--line);background:#11151ddd}
+h1{font-size:clamp(25px,4vw,34px);margin:0 0 4px}
+header p{color:var(--muted);margin:0;max-width:700px}
+main{max-width:1200px;margin:auto;padding:20px 18px 60px}
+.muted{color:var(--muted)}
+button,select,input,.dakbtn{font:inherit}
+button{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:10px;padding:9px 14px;cursor:pointer}
+button:hover{border-color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.toolbar input,.toolbar select{background:#11151d;border:1px solid var(--line);color:var(--text);border-radius:9px;padding:9px 11px}
+.toolbar input{flex:1;min-width:160px;max-width:300px}
+#count{margin-left:auto;font-size:13px}
+#status{color:var(--yellow);margin:0 0 12px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.empty{grid-column:1/-1;padding:28px;text-align:center;color:var(--muted)}
+.pcard{display:block;width:100%;min-width:0;text-align:left;padding:0;border-radius:14px;background:linear-gradient(160deg,#242b3b,#171b24);overflow:hidden;color:var(--text)}
+.most{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));height:112px;background:linear-gradient(180deg,#2a3040,#1a1e29)}
+.slot{display:flex;align-items:flex-end;justify-content:center;min-width:0;overflow:hidden;background:radial-gradient(ellipse at 50% 100%,#6d60b644,transparent 70%);border-left:1px solid #ffffff0d}
+.slot:first-child{border-left:0}
+.slot img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.no-art{align-self:center;color:#6e7890;font-size:22px}
+.no-art.dim{color:#465065}
+.pinfo{padding:10px 12px 12px}
+.pname{font-weight:800;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prec{color:var(--muted);font-size:12px;margin-top:3px;font-variant-numeric:tabular-nums}
+.w{color:var(--green)}.l{color:var(--red)}
+.wbar{height:4px;background:#2b3040;border-radius:9px;margin-top:8px;overflow:hidden}
+.wbar i{display:block;height:100%;background:linear-gradient(90deg,#8170ed,#b4a8ff)}
+dialog{width:100%;max-width:min(560px,calc(100vw - 24px));max-height:calc(100vh - 28px);padding:0;border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,#1d2230,#161a23);color:var(--text)}
+dialog::backdrop{background:#05070bcc}
+.sheet{padding:18px}
+.sheet-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.sheet-head h2{margin:0;font-size:24px;overflow-wrap:anywhere}
+.sheet-head p{margin:2px 0 0;color:var(--muted);font-size:13px;overflow-wrap:anywhere}
+.sheet h3{font-size:14px;color:var(--muted);margin:20px 0 8px;font-weight:700}
+.mgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.mchar{border:1px solid var(--line);border-radius:12px;background:#ffffff05;overflow:hidden}
+.mart{height:150px;display:flex;align-items:flex-end;justify-content:center;background:radial-gradient(ellipse at 50% 100%,#6d60b655,transparent 70%),linear-gradient(180deg,#2a3040,#1a1e29)}
+.mart img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.mname{padding:7px 8px;text-align:center;font-weight:700;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dakbtn{display:inline-block;margin-top:16px;padding:10px 16px;border-radius:10px;background:var(--accent);color:#171329;font-weight:800;text-decoration:none}
+.dakbtn:hover{filter:brightness(1.08)}
+.mstats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.mstat{padding:9px 10px;border-radius:10px;background:#ffffff08}
+.mstat span{display:block;color:var(--muted);font-size:11px}
+.mstat strong{font-size:18px;font-variant-numeric:tabular-nums}
+.row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid #ffffff0d;font-size:13px;flex-wrap:wrap}
+.row:last-child{border-bottom:0}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:3px 7px;border:1px solid #ffffff12;border-radius:8px;background:#11151d}
+.chip img{width:23px;height:30px;object-fit:contain}
+.chip .no-art{font-size:14px;width:23px;text-align:center}
+.badge{display:inline-block;min-width:38px;text-align:center;padding:2px 8px;border-radius:99px;font-size:12px;font-weight:800;background:#292d3b}
+.badge.w{color:var(--green)}.badge.l{color:var(--red)}
+.row .date{color:var(--muted);font-variant-numeric:tabular-nums;min-width:78px}
+.footer-note{color:var(--muted);font-size:12px;margin-top:22px}
+@media(max-width:560px){
+ .pgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .most{height:92px}
+ .mstats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .mart{height:120px}
+ #count{margin-left:0}
+}
+@media(prefers-reduced-motion:no-preference){.pcard{transition:transform .15s,border-color .15s}.pcard:hover{transform:translateY(-3px)}}
+.pcard{border:1px solid var(--line);cursor:pointer}.pcard:hover{border-color:var(--accent)}
+.back{display:inline-block;margin-bottom:6px;color:var(--accent);text-decoration:none;font-size:13px}.back:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<header>
+<a class="back" href="index.html">← 내전 전적</a>
+<h1>내전 참가자</h1>
+<p>카드를 누르면 모스트 3, 닥지지 링크, 내전 성적을 볼 수 있습니다.</p>
+</header>
+<main>
+<div class="toolbar">
+<input id="q" type="search" placeholder="닉네임 검색…" aria-label="참가자 검색">
+<select id="sort" aria-label="정렬">
+<option value="games">참가 경기 많은 순</option>
+<option value="rate">승률 높은 순</option>
+<option value="name">이름순</option>
+</select>
+<span id="count" class="muted"></span>
+</div>
+<p id="status" role="status"></p>
+<div id="grid" class="pgrid"></div>
+<p class="footer-note">내전 성적은 data.json의 경기 기록으로 계산합니다. 모스트 3는 관리자가 직접 입력한 값입니다. 최다 픽과 최근 경기의 캐릭터는 참가자와 캐릭터의 대응이 확인된 경기만 반영합니다.</p>
+</main>
+<dialog id="dlg" aria-labelledby="mTitle">
+<div class="sheet">
+<div class="sheet-head"><div><h2 id="mTitle"></h2><p id="mSub"></p></div><button id="mClose" type="button">닫기</button></div>
+<div id="mBody"></div>
+</div>
+</dialog>
+<script>
+const DAK_BASE='https://dak.gg/er/players/';
+const CHAR_FILES={
+ '아비게일':'Abigail.png','아델라':'Adela.png','아디나':'Adina.png','아드리아나':'Adriana.png','에이든':'Aiden.png','알렉스':'Alex.png','알론소':'Alonso.png','아르다':'Arda.png','아야':'Aya.png','바바라':'Barbara.png','버니스':'bERnice.png','비앙카':'Bianca.png','비형':'Bihyung.png','블레어':'Blair.png','카밀로':'Camilo.png','캐시':'Cathy.png','셀린':'Celine.png','샬럿':'Charlotte.png','키아라':'Chiara.png','클로에':'Chloe.png','코렐라인':'Coraline.png','크레이버':'CravER.png','다니엘':'Daniel.png','다르코':'Darko.png','데비&마를렌':'DebiMarlene.png','에키온':'Echion.png','엘레나':'Elena.png','일레븐':'Eleven.png','엠마':'Emma.png','에스텔':'Estelle.png','이바':'Eva.png','펠릭스':'Felix.png','펜리르':'Fenrir.png','피올로':'Piolo.png','피오라':'Fiora.png','가넷':'Garnet.png','하트':'Hart.png','헤이즈':'Haze.png','헨리':'Henry.png','히스이':'Hisui.png','혜진':'Hyejin.png','현우':'Hyunwoo.png','이렘':'Irem.png','아이작':'Isaac.png','아이솔':'Isol.png','이슈트반':'Istvan.png','재키':'Jackie.png','얀':'Jan.png','제니':'Jenny.png','요한':'Johann.png','유스티나':'Justyna.png','칼라':'Karla.png','카티야':'Katja.png','케네스':'Kenneth.png','라우라':'Laura.png','레니':'Leni.png','르노어':'Lenore.png','레녹스':'Lenox.png','레온':'Leon.png','리다이린':'Li Dailin.png','루시아':'Lucia.png','루크':'Luke.png','이안':'Ly anh.png','매그너스':'Magnus.png','마이':'Mai.png','마커스':'Markus.png','마르티나':'Martina.png','미르카':'Mirka.png','나딘':'Nadine.png','나타폰':'Nathapon.png','니아':'NiaH.png','니키':'Nicky.png','프리야':'Priya.png','리오':'Rio.png','로지':'Rozzi.png','세레스':'Seres.png','쇼이치':'Shoichi.png','실비아':'Silvia.png','시셀라':'Sissela.png','수아':'Sua.png','타지아':'Tazia.png','테오도르':'Theodore.png','띠아':'Tia.png','츠바메':'Tsubame.png','바냐':'Vanya.png','윌리엄':'William.png','쇼우':'Xiukai.png','슈린':'xuelin.png','유키':'Yuki.png','유민':'YuMin.png','자히르':'Zahir.png'
+};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pct=(a,b)=>b?(100*a/b).toFixed(2).replace(/\.00$/,'')+'%':'0%';
+const fmtDate=d=>d?String(d).replaceAll('-','.'):'';
+const safeUrl=u=>{u=String(u||'').trim();return /^https?:\/\//i.test(u)?u:''};
+const charImage=n=>CHAR_FILES[n]?'assets/'+encodeURIComponent(CHAR_FILES[n]):'';
+const art=n=>{const s=charImage(n);return s?`<img class="art-img" src="${s}" alt="${esc(n)}" loading="lazy">`:'<span class="no-art">◇</span>'};
+// 이미지 파일이 없으면 깨진 그림 대신 ◇ 표시
+document.addEventListener('error',e=>{const t=e.target;if(t&&t.tagName==='IMG'&&t.classList.contains('art-img')){const s=document.createElement('span');s.className='no-art';s.textContent='◇';t.replaceWith(s)}},true);
+
+let PLAYERS=[],PROFILES={};
+function build(data){
+ const matches=Array.isArray(data.matches)?data.matches:[],alias=data.playerAliases||{};
+ PROFILES=data.playerProfiles||{};
+ const disp=n=>alias[n]||n,map={};
+ matches.forEach((x,idx)=>{[1,2].forEach(t=>{
+  const ps=(t===1?x.team1Players:x.team2Players)||[],cs=(t===1?x.team1Chars:x.team2Chars)||[];
+  ps.forEach((p,i)=>{
+   const name=disp(p);
+   const o=map[name]||(map[name]={name,games:0,wins:0,losses:0,nicks:{},chars:{},recent:[]});
+   const d=x.date||'',key=d+'#'+String(idx).padStart(6,'0');
+   if(!(p in o.nicks)||key>=o.nicks[p])o.nicks[p]=key;
+   const res=x.winner==='draw'?'D':(String(x.winner)===String(t)?'W':'L');
+   o.games++;if(res==='W')o.wins++;else if(res==='L')o.losses++;
+   const c=x.individualMappingKnown!==false?(cs[i]||null):null;
+   if(c){const e=o.chars[c]||(o.chars[c]={picks:0,wins:0});e.picks++;if(res==='W')e.wins++}
+   o.recent.push({date:d,idx,res,char:c});
+  });
+ })});
+ PLAYERS=Object.values(map).map(o=>{
+  const nicks=Object.entries(o.nicks).sort((a,b)=>b[1]<a[1]?-1:b[1]>a[1]?1:0).map(e=>e[0]);
+  const top=Object.entries(o.chars).sort((a,b)=>b[1].picks-a[1].picks||b[1].wins-a[1].wins||a[0].localeCompare(b[0],'ko')).slice(0,3);
+  const recent=o.recent.slice().sort((a,b)=>b.date<a.date?-1:b.date>a.date?1:b.idx-a.idx).slice(0,5);
+  return {name:o.name,games:o.games,wins:o.wins,losses:o.losses,chars:o.chars,nicks,latest:nicks[0]||o.name,top,recent,rate:o.games?o.wins/o.games:0};
+ });
+}
+const most3=p=>{const m=(PROFILES[p.name]||{}).most3;return (Array.isArray(m)?m:[]).filter(Boolean).slice(0,3)};
+const dakHref=p=>{const pr=PROFILES[p.name]||{};return safeUrl(pr.dakUrl)||DAK_BASE+encodeURIComponent(String(pr.dakNick||'').trim()||p.latest)};
+
+function renderGrid(){
+ const q=$('q').value.trim().toLowerCase(),s=$('sort').value;
+ const list=PLAYERS.filter(p=>!q||(p.name+' '+p.nicks.join(' ')).toLowerCase().includes(q));
+ const byName=(a,b)=>a.name.localeCompare(b.name,'ko');
+ list.sort(s==='rate'?(a,b)=>b.rate-a.rate||b.games-a.games||byName(a,b):s==='name'?byName:(a,b)=>b.games-a.games||b.rate-a.rate||byName(a,b));
+ $('count').textContent=list.length+'명';
+ $('grid').innerHTML=list.map(p=>{
+  const m=most3(p);
+  const slots=[0,1,2].map(i=>`<div class="slot">${m[i]?art(m[i]):'<span class="no-art dim">—</span>'}</div>`).join('');
+  return `<button type="button" class="pcard" data-name="${esc(p.name)}" aria-label="${esc(p.name)} 프로필 열기${m.length?' · 모스트 '+esc(m.join(', ')):''}"><div class="most">${slots}</div><div class="pinfo"><div class="pname">${esc(p.name)}</div><div class="prec">${p.games}경기 · <span class="w">${p.wins}승</span> <span class="l">${p.losses}패</span> · ${pct(p.wins,p.games)}</div><div class="wbar"><i style="width:${(p.rate*100).toFixed(1)}%"></i></div></div></button>`;
+ }).join('')||'<div class="empty">조건에 맞는 참가자가 없습니다.</div>';
+}
+
+function openPlayer(name){
+ const p=PLAYERS.find(x=>x.name===name);if(!p)return;
+ $('mTitle').textContent=p.name;
+ $('mSub').textContent=(p.nicks.length>1||p.nicks[0]!==p.name)?'인게임 닉네임: '+p.nicks.join(', '):'';
+ const m=most3(p);
+ const mostHtml=m.length?`<div class="mgrid">${m.map(c=>`<div class="mchar"><div class="mart">${art(c)}</div><div class="mname">${esc(c)}</div></div>`).join('')}</div>`:'<p class="muted">모스트 3가 아직 등록되지 않았습니다.</p>';
+ const topHtml=p.top.length?p.top.map(([c,v])=>`<div class="row"><span class="chip">${art(c)}<span>${esc(c)}</span></span><span class="muted">${v.picks}회 · 승 ${v.wins} (${pct(v.wins,v.picks)})</span></div>`).join(''):'<p class="muted">참가자와 캐릭터의 대응이 확인된 경기가 없습니다.</p>';
+ const label={W:'승',L:'패',D:'무효'};
+ const recentHtml=p.recent.map(r=>`<div class="row"><span class="date">${esc(fmtDate(r.date))}</span><span class="badge ${r.res==='W'?'w':r.res==='L'?'l':''}">${label[r.res]}</span>${r.char?`<span class="chip">${art(r.char)}<span>${esc(r.char)}</span></span>`:'<span class="muted">캐릭터 미확인</span>'}</div>`).join('');
+ $('mBody').innerHTML=`<h3>모스트 3</h3>${mostHtml}<a class="dakbtn" href="${esc(dakHref(p))}" target="_blank" rel="noopener noreferrer">닥지지에서 전적 보기</a>
+ <h3>내전 성적</h3><div class="mstats"><div class="mstat"><span>참가 경기</span><strong>${p.games}</strong></div><div class="mstat"><span>승</span><strong class="w">${p.wins}</strong></div><div class="mstat"><span>패</span><strong class="l">${p.losses}</strong></div><div class="mstat"><span>승률</span><strong>${pct(p.wins,p.games)}</strong></div></div>
+ <h3>내전 최다 픽</h3>${topHtml}
+ <h3>최근 경기</h3>${recentHtml}`;
+ if(!$('dlg').open)$('dlg').showModal();
+ try{history.replaceState(null,'','#'+encodeURIComponent(name))}catch(e){}
+}
+$('grid').addEventListener('click',e=>{const b=e.target.closest('.pcard');if(b)openPlayer(b.dataset.name)});
+$('mClose').addEventListener('click',()=>$('dlg').close());
+$('dlg').addEventListener('click',e=>{if(e.target===$('dlg'))$('dlg').close()});
+$('dlg').addEventListener('close',()=>{try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}});
+$('q').addEventListener('input',renderGrid);$('sort').addEventListener('change',renderGrid);
+function openFromHash(){let n='';try{n=decodeURIComponent(location.hash.slice(1))}catch(e){}if(n)openPlayer(n)}
+window.addEventListener('hashchange',openFromHash);
+
+fetch('data.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(data=>{
+ build(data);
+ if(!PLAYERS.length){$('status').textContent='경기 기록이 없습니다.';$('count').textContent='';return}
+ renderGrid();openFromHash();
+}).catch(err=>{
+ $('status').textContent='data.json을 불러오지 못했습니다 ('+err.message+'). 파일을 더블클릭해서 연 경우 브라우저가 읽기를 막습니다. 사이트 주소(GitHub Pages)나 로컬 서버로 열어 주세요.';
+});
+</script>
+</body>
+</html>
